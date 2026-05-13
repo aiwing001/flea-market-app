@@ -1,8 +1,8 @@
-/node_modules
+src/node_modules/
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
+src/vendor/
 .env
 .env.backup
 .phpunit.result.cache
@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+docker/mysql/data/
+src/.env
