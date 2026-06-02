@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+
+class ProfileController extends Controller
+{
+    public function profile()
+    {
+        return view('profile');
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            ]);
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->postal_code = $request->postal_code;
+        $user->address = $request->address;
+        $user->building = $request->building;
+        $user->save();
+
+        return redirect('/');
+    }
+
+    public function mypage()
+    {
+        $tab = request('tab', 'sell');
+        $items = Product::all();
+        return view('mypage', compact('tab', 'items'));
+    }
+}

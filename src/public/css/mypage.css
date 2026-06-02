@@ -1,0 +1,86 @@
+.mypage {
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.mypage__profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 30px;
+}
+
+.mypage__image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #eee;
+}
+
+.mypage__name {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.mypage__edit-button {
+    padding: 8px 20px;
+    border: 1px solid #ff5555;
+    border-radius: 5px;
+    color: #ff5555;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mypage__edit-button:hover {
+    opacity: 0.7;
+}
+
+.mypage__tab {
+    display: flex;
+    gap: 40px;
+    padding: 0 30px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.mypage__tab-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mypage__tab-link--active {
+    color: #ff5555;
+}
+
+.mypage__content {
+    padding: 40px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 30px;
+}
+
+.item-card {
+    width: calc((100% - 90px) / 4);
+    text-decoration: none;
+    color: inherit;
+}
+
+.item-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #eee;
+}
+
+.item-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-card__name {
+    margin-top: 10px;
+    font-size: 18px;
+}

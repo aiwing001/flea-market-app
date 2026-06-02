@@ -1,0 +1,52 @@
+@extends('layouts.app')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+@endsection
+
+@section('content')
+
+<div class="mypage">
+    <div class="mypage__profile">
+        <div class="mypage__image">
+            <img src="{{ asset('images/default-icon.png') }}" alt=" プロフィール画像">
+        </div>
+        <p class="mypage__name">
+            {{ Auth::user()->name }}
+        </p>
+        <a class="mypage__edit-button" href="/mypage/profile">
+            プロフィールを編集
+        </a>
+    </div>
+
+    <div class="mypage__tab">
+        <a
+        class="mypage__tab-link {{ $tab !== 'buy' ? 'mypage__tab-link--active' : '' }}"
+        href="/mypage"
+        >
+            出品した商品
+        </a>
+
+        <a
+            class="mypage__tab-link {{ $tab === 'buy' ? 'mypage__tab-link--active' : '' }}"
+            href="/mypage?tab=buy"
+        >
+            購入した商品
+        </a>
+    </div>
+
+    <div class="mypage__content">
+        @foreach($items as $item)
+            <a class="item-card" href="/item/{{ $item->id }}">
+                <div class="item-card__image">
+                    <img src="{{ asset($item->image) }}" alt="商品画像">
+                </div>
+                <div class="item-card__name">
+                    {{ $item->name }}
+                </div>
+            </a>
+        @endforeach
+    </div>
+</div>
+
+@endsection
