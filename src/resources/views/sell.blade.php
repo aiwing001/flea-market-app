@@ -19,6 +19,11 @@
             <div class="sell-form__title">
                 商品画像
             </div>
+                @error('image')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             <label class="sell-form__image-button">
                 画像を選択する
                 <input type="file" name="image" hidden>
@@ -35,12 +40,17 @@
                 </div>
                 <div class="sell-form__categories">
                     @foreach($categories as $category)
-                        <label>
-                            <input type="checkbox" name="categories[]" value="{{ $category->id }}">
-                            {{ $category->name }}
-                        </label>
+                    <label>
+                        <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </label>
                     @endforeach
                 </div>
+                @error('categories')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
             {{-- 商品の状態 --}}
             <div class="sell-form__group">
@@ -54,6 +64,11 @@
                     <option value="3">やや傷や汚れあり</option>
                     <option value="4">状態が悪い</option>
                 </select>
+                @error('condition')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
         </div>
         {{-- 商品名と説明 --}}
@@ -64,14 +79,29 @@
             <div class="sell-form__group">
                 <div class="sell-form__title">商品名</div>
                 <input type="text" name="name">
+                @error('name')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
             <div class="sell-form__group">
                 <div class="sell-form__title">ブランド名</div>
                 <input type="text" name="brand">
+                @error('brand')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
             <div class="sell-form__group">
                 <div class="sell-form__title">商品の説明</div>
                 <textarea name="description"></textarea>
+                @error('description')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
             <div class="sell-form__group">
                 <div class="sell-form__title">販売価格</div>
@@ -79,6 +109,11 @@
                     <span>￥</span>
                     <input type="text" name="price">
                 </div>
+                @error('price')
+                    <p class="sell-form__error">
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
         </div>
         {{-- ボタン --}}

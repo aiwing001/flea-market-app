@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SellController;
 
 
 Route::get('/', [ItemController::class, 'index']);
@@ -21,3 +22,5 @@ Route::delete('/like/{product}', [LikeController::class,'destroy'])->middleware(
 Route::post('/comment/{item}', [CommentController::class,'store'])->middleware('auth');
 Route::get('/mypage', [ProfileController::class, 'mypage'])->middleware('auth');
 Route::get('/sell', [ItemController::class, 'sell'])->middleware('auth');
+Route::get('sell', [SellController::class,'index'])->middleware('auth');
+Route::post('sell', [SellController::class,'store'])->middleware('auth');

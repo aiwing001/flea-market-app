@@ -28,10 +28,16 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
-    public function mypage()
+    public function mypage(Request $request)
     {
-        $tab = request('tab', 'sell');
-        $items = Product::all();
+        $tab = $request->query('tab');
+
+        if ($tab === 'buy') {
+            $items = collect();
+        } else {
+            $items = Product::where('user_id', Auth::id())->get();
+        }
+
         return view('mypage', compact('tab', 'items'));
     }
 }

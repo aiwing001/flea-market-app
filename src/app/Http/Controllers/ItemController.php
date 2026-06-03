@@ -44,12 +44,4 @@ class ItemController extends Controller
 
         return view('item', compact('item', 'isLiked'));
     }
-
-    public function sell()
-    {
-        $categories = Category::all();
-
-        return view('sell', compact('categories'));
-    }
-
 }

@@ -9,6 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'name',
+        'brand',
+        'price',
+        'description',
+        'condition',
+        'status',
+        'image',
+    ];
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

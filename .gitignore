@@ -15,3 +15,4 @@ yarn-error.log
 /.vscode
 docker/mysql/data/
 src/.env
+src/public/storage
