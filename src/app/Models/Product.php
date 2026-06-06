@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'category_product');
     }
+
+    public function purchase()
+    {
+        return $this->hasOne(Purchase::class);
+    }
 }

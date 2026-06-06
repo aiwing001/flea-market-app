@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="purchase-page">
-    <form class="purchase-form" action="/purchase" method="POST">
+    <form class="purchase-form" action="/item/{{ $item->id }}/purchase" method="POST">
         @csrf
         <div class="purchase-form__content">
             {{-- 商品情報 --}}
@@ -57,13 +57,13 @@
                 </div>
                 <div class="purchase-address__content">
                     <p class="purchase-address__postcode">
-                        〒123-4567
+                        〒{{ Auth::user()->postal_code }}
                     </p>
                     <p class="purchase-address__text">
-                        東京都渋谷区1-2-3
+                        {{ Auth::user()->address }}
                     </p>
                     <p class="purchase-address__building">
-                        マンション101
+                        {{ Auth::user()->building }}
                     </p>
                 </div>
             </section>
