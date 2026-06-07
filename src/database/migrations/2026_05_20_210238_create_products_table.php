@@ -20,10 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('brand')->nullable();
             $table->unsignedInteger('price');
             $table->text('description');
-            $table->foreignId('product_image_id')
-                ->nullable()
-                ->constrained('product_images')
-                ->cascadeOnDelete();
+            // $table->foreignId('product_image_id')
+            //     ->nullable()
+            //     ->constrained('product_images')
+            //     ->cascadeOnDelete();
+            $table->string('image')->nullable();
+            
             $table->tinyInteger('condition');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

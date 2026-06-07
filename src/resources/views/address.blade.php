@@ -19,7 +19,7 @@
             郵便番号
         </div>
         <div class="address-form__input">
-            <input type="text" name="postal_code" value="{{ old('postal_code') }}">
+            <input type="text" name="postal_code" value="{{ old('postal_code', Auth::user()->postal_code) }}">
         </div>
     </div>
     <div class="address-form__group">
@@ -27,7 +27,7 @@
             住所
         </div>
         <div class="address-form__input">
-            <input type="text" name="address" value="{{ old('address') }}">
+            <input type="text" name="address" value="{{ old('address', Auth::user()->address) }}">
         </div>
     </div>
     <div class="address-form__group">
@@ -35,7 +35,7 @@
             建物名
         </div>
         <div class="address-form__input">
-            <input type="text" name="building" value="{{ old('building') }}">
+            <input type="text" name="building" value="{{ old('building', Auth::user()->building) }}">
         </div>
     </div>
     <div class="address-form__button">

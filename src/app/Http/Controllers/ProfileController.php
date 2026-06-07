@@ -17,8 +17,16 @@ class ProfileController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            ]);
+            'image' => ['nullable', 'image'],
+        ]);
+
         $user = Auth::user();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('profile_images', 'public');
+            $user->image_url = $path;
+        }
+
         $user->name = $request->name;
         $user->postal_code = $request->postal_code;
         $user->address = $request->address;

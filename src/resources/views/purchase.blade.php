@@ -14,7 +14,7 @@
             <section class="purchase-item">
                 <div class="purchase-item__content">
                     <div class="purchase-item__image">
-                        <img src="{{ asset('images/sample.png')}}" alt="商品画像">
+                        <img src="{{ asset($item->image) }}" alt="商品画像">
                     </div>
                     <div class="purchase-item__info">
                         <h2 class="purchase-item__name">
@@ -33,15 +33,9 @@
                 </h3>
                 <div class="purchase-payment__select">
                     <select name="payment_method">
-                        <option value="">
-                            選択してください
-                        </option>
-                        <option value="convenience">
-                            コンビニ払い
-                        </option>
-                        <option value="card">
-                            カード払い
-                        </option>
+                        <option value="">選択してください</option>
+                        <option value="konbini">コンビニ払い</option>
+                        <option value="card">カード払い</option>
                     </select>
                 </div>
             </section>
@@ -57,13 +51,13 @@
                 </div>
                 <div class="purchase-address__content">
                     <p class="purchase-address__postcode">
-                        〒{{ Auth::user()->postal_code }}
+                        〒{{$address ? $address->postal_code : Auth::user()->postal_code }}
                     </p>
                     <p class="purchase-address__text">
-                        {{ Auth::user()->address }}
+                        {{ $address ? $address->address : Auth::user()->address }}
                     </p>
                     <p class="purchase-address__building">
-                        {{ Auth::user()->building }}
+                        {{ $address ? $address->building : Auth::user()->building }}
                     </p>
                 </div>
             </section>

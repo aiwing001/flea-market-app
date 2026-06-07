@@ -9,7 +9,12 @@
 <div class="mypage">
     <div class="mypage__profile">
         <div class="mypage__image">
-            <img src="{{ asset('images/default-icon.png') }}" alt=" プロフィール画像">
+            <img
+                src="{{ Auth::user()->image_url ? 
+                    asset('storage/' . Auth::user()->image_url) :
+                    asset('images/default-icon.png') }}" 
+                alt="プロフィール画像"
+            >
         </div>
         <p class="mypage__name">
             {{ Auth::user()->name }}

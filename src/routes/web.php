@@ -24,3 +24,5 @@ Route::get('/mypage', [ProfileController::class, 'mypage'])->middleware('auth');
 Route::get('/sell', [ItemController::class, 'sell'])->middleware('auth');
 Route::get('sell', [SellController::class,'index'])->middleware('auth');
 Route::post('sell', [SellController::class,'store'])->middleware('auth');
+Route::post('/item/{item_id}/purchase',[PurchaseController::class, 'store'])->middleware('auth');
+Route::get('purchase/success/{item_id}', [PurchaseController::class, 'success'])->middleware('auth');
