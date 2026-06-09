@@ -96,10 +96,8 @@ class PurchaseController extends Controller
             'ordered_at' => now(),
         ]);
 
-        $status = $request->payment_method === 'konbini' ? 2 : 1;
-
         $item->update([
-            'status' => $status,
+            'status' => 2,
         ]);
 
         return redirect('/');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Http\Requests\SellRequest;
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
 
 class SellController extends Controller
@@ -16,7 +16,7 @@ class SellController extends Controller
         return view('sell', compact('categories'));
     }
 
-    public function store(SellRequest $request)
+    public function store(ExhibitionRequest $request)
     {
         $imagePath = $request->file('image')->store('products','public');
 

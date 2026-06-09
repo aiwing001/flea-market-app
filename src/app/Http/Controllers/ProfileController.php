@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Order;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -13,13 +15,8 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'image' => ['nullable', 'image'],
-        ]);
-
         $user = Auth::user();
 
         if ($request->hasFile('image')) {
@@ -38,14 +35,17 @@ class ProfileController extends Controller
 
     public function mypage(Request $request)
     {
-        $tab = $request->query('tab');
+        $page = $request->query('page', 'sell');
 
-        if ($tab === 'buy') {
-            $items = collect();
+        if ($page === 'buy') {
+            $items = Order::where('user_id', Auth::id())
+                ->with('product')
+                ->get()
+                ->pluck('product');
         } else {
             $items = Product::where('user_id', Auth::id())->get();
         }
 
-        return view('mypage', compact('tab', 'items'));
+        return view('mypage', compact('page', 'items'));
     }
 }

@@ -25,14 +25,14 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(RegisterResponse::class,function () {
-            return new class implements RegisterResponse {
-                public function toResponse($request)
-                {
-                    return redirect('/mypage/profile');
-                }
-            };
-        });
+        // $this->app->singleton(RegisterResponse::class,function () {
+        //     return new class implements RegisterResponse {
+        //         public function toResponse($request)
+        //         {
+        //             return redirect('/email/verify');
+        //         }
+        //     };
+        // });
 
         $this->app->singleton(LoginResponse::class,function () {
             return new class implements LoginResponse {
@@ -49,6 +49,15 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->app->singleton(RegisterResponse::class,function () {
+            return new class implements RegisterResponse {
+                public function toResponse($request)
+                {
+                    return redirect('/email/verify');
+                }
+            };
+        });
+        
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -80,6 +89,10 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::registerView(function () {
             return view('register');
+        });
+
+        Fortify::verifyEmailView(function () {
+            return view('verify-email');
         });
 
         RateLimiter::for('login', function (Request $request) {

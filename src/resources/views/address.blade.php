@@ -21,6 +21,9 @@
         <div class="address-form__input">
             <input type="text" name="postal_code" value="{{ old('postal_code', Auth::user()->postal_code) }}">
         </div>
+        @error('postal_code')
+            <p class="error-message">{{ $message }}</p>
+        @enderror
     </div>
     <div class="address-form__group">
         <div class="address-form__title">
@@ -29,6 +32,9 @@
         <div class="address-form__input">
             <input type="text" name="address" value="{{ old('address', Auth::user()->address) }}">
         </div>
+        @error('address')
+            <p class="error-message">{{ $message }}</p>
+        @enderror
     </div>
     <div class="address-form__group">
         <div class="address-form__title">

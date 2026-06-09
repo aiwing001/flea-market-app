@@ -26,14 +26,14 @@
 
     <div class="mypage__tab">
         <a
-        class="mypage__tab-link {{ $tab !== 'buy' ? 'mypage__tab-link--active' : '' }}"
-        href="/mypage"
+        class="mypage__tab-link {{ $page === 'sell' ? 'mypage__tab-link--active' : '' }}"
+        href="/mypage?page=sell"
         >
             出品した商品
         </a>
 
         <a
-            class="mypage__tab-link {{ $tab === 'buy' ? 'mypage__tab-link--active' : '' }}"
+            class="mypage__tab-link {{ $page === 'buy' ? 'mypage__tab-link--active' : '' }}"
             href="/mypage?tab=buy"
         >
             購入した商品

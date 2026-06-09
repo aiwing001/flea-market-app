@@ -45,3 +45,18 @@
     margin-top: 10px;
     font-size: 18px;
 }
+
+.item-card__image {
+    position: relative;
+}
+
+.item-card__sold {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+}

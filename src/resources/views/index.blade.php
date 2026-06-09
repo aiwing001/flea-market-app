@@ -10,13 +10,13 @@
     <a
         class=
         "index-page__tab-link {{ $tab !== 'mylist' ? 'index-page__tab-link--active' : ''}}"
-        href="/">
+        href="/?keyword={{ request('keyword') }}">
         おすすめ
     </a>
     <a
         class=
         "index-page__tab-link {{ $tab === 'mylist' ? 'index-page__tab-link--active' : ''}}"
-        href="/?tab=mylist">
+        href="/?tab=mylist&keyword={{ request('keyword') }}">
         マイリスト
     </a>
 </div>
@@ -26,6 +26,11 @@
     <a class="item-card" href="/item/{{ $item->id }}">
         <div class="item-card__image">
             <img src="{{ asset($item->image) }}" alt="商品画像">
+            @if($item->status === 2)
+                <div class="item-card__sold">
+                    SOLD
+                </div>
+            @endif
         </div>
         <div class="item-card__name">
             {{ $item->name}}

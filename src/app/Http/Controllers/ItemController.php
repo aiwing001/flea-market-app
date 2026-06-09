@@ -16,6 +16,10 @@ class ItemController extends Controller
         $tab = $request->query('tab', 'recommend');
         $keyword = $request->query('keyword');
 
+        if ($tab === 'mylist' && !Auth::check()) {
+            return redirect('/login');
+        }
+
         $items = Product::query()
             ->when($tab === 'mylist' && Auth::check(), function ($query) {
                 $query->whereHas('likes', function ($query) {
