@@ -27,4 +27,12 @@ class PurchaseRequest extends FormRequest
             'payment_method' => 'required|in:card,konbini',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'payment_method.required' => '支払い方法を選択してください',
+            'payment_method.in' => '正しい支払い方法を選択してください',
+        ];
+    }
 }

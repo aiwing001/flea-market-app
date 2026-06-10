@@ -34,7 +34,7 @@
 
         <a
             class="mypage__tab-link {{ $page === 'buy' ? 'mypage__tab-link--active' : '' }}"
-            href="/mypage?tab=buy"
+            href="/mypage?page=buy"
         >
             購入した商品
         </a>
