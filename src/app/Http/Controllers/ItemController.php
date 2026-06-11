@@ -17,7 +17,9 @@ class ItemController extends Controller
         $keyword = $request->query('keyword');
 
         if ($tab === 'mylist' && !Auth::check()) {
-            return redirect('/login');
+            $items = collect();
+
+            return view('index', compact('items','tab'));
         }
 
         $items = Product::query()
