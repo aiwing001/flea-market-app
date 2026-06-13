@@ -1,5 +1,5 @@
 .mypage {
-    max-width: 1230px;
+    max-width: 1800px;
     margin: 0 auto;
 }
 
@@ -7,8 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
-    padding: 60px 30px;
+    gap: 80px;
+    padding: 40px 30px;
 }
 
 .mypage__image img {
@@ -22,6 +22,7 @@
 .mypage__name {
     font-size: 32px;
     font-weight: bold;
+    margin-right: 100px;
 }
 
 .mypage__edit-button {
@@ -39,8 +40,9 @@
 
 .mypage__tab {
     display: flex;
-    gap: 40px;
-    padding: 0 30px 10px;
+    gap: 80px;
+    padding: 20px 0 10px;
+    padding-left: 180px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -59,11 +61,11 @@
     padding: 40px 30px;
     display: flex;
     flex-wrap: wrap;
-    gap: 40px 30px;
+    gap: 50px 50px;
 }
 
 .item-card {
-    width: calc((100% - 90px) / 4);
+    width: calc((100% - 150px) / 4);
     text-decoration: none;
     color: inherit;
 }

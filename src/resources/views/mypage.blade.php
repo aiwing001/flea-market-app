@@ -23,33 +23,35 @@
             プロフィールを編集
         </a>
     </div>
+</div>
 
-    <div class="mypage__tab">
-        <a
+<div class="mypage__tab">
+    <a
         class="mypage__tab-link {{ $page === 'sell' ? 'mypage__tab-link--active' : '' }}"
         href="/mypage?page=sell"
-        >
-            出品した商品
-        </a>
+    >
+        出品した商品
+    </a>
 
-        <a
-            class="mypage__tab-link {{ $page === 'buy' ? 'mypage__tab-link--active' : '' }}"
-            href="/mypage?page=buy"
-        >
-            購入した商品
-        </a>
-    </div>
+    <a
+        class="mypage__tab-link {{ $page === 'buy' ? 'mypage__tab-link--active' : '' }}"
+        href="/mypage?page=buy"
+    >
+        購入した商品
+    </a>
+</div>
 
+<div class="mypage">
     <div class="mypage__content">
         @foreach($items as $item)
-            <a class="item-card" href="/item/{{ $item->id }}">
-                <div class="item-card__image">
-                    <img src="{{ asset($item->image) }}" alt="商品画像">
-                </div>
-                <div class="item-card__name">
-                    {{ $item->name }}
-                </div>
-            </a>
+        <a class="item-card" href="/item/{{ $item->id }}">
+            <div class="item-card__image">
+                <img src="{{ asset($item->image) }}" alt="商品画像">
+            </div>
+            <div class="item-card__name">
+                {{ $item->name }}
+            </div>
+        </a>
         @endforeach
     </div>
 </div>

@@ -37,15 +37,56 @@
 .sell-form__categories {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+}
+
+.sell-form__category {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.sell-form__category input {
+    display: none;
+}
+
+.sell-form__category span {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #ff5555;
+    border-radius: 20px;
+    color: #ff5555;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sell-form__category input:checked + span {
+    background: #ff5555;
+    color: #fff;
+}
+
+.sell-form__category:hover {
+    opacity: 0.7;
+}
+
+.sell-form__image-area {
+    width: 100%;
+    padding: 40px 0;
+    border: 1px dashed #ccc;
+    text-align: center;
 }
 
 .sell-form__image-button {
     display: inline-block;
     padding: 10px 20px;
     border: 1px solid #ff5555;
+    border-radius: 5px;
     color: #ff5555;
     cursor: pointer;
+}
+
+.sell-form__image-button:hover {
+    background-color: #ff5555;
+    color: #fff;
 }
 
 .sell-form input[type="text"],

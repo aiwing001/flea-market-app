@@ -11,13 +11,14 @@
 }
 
 .item-card {
-    width: calc((100% - 90px) / 4);
+    width: calc((100% - 150px) / 4);
 }
 
 .index-page__tab {
     display: flex;
-    gap: 40px;
+    gap: 80px;
     padding: 40px 0 10px;
+    padding-left: 180px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -33,12 +34,12 @@
 }
 
 .index-page__content {
-    max-width: 1230px;
+    max-width: 1800px;
     margin: 40px auto;
     padding: 0 30px;
     display: flex;
     flex-wrap: wrap;
-    gap: 40px 30px;
+    gap: 50px 50px;
 }
 
 .item-card__name {

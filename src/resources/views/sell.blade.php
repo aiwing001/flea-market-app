@@ -24,10 +24,12 @@
                         {{ $message }}
                     </p>
                 @enderror
-            <label class="sell-form__image-button">
-                画像を選択する
-                <input type="file" name="image" hidden>
-            </label>
+            <div class="sell-form__image-area">
+                <label class="sell-form__image-button">
+                    画像を選択する
+                    <input type="file" name="image" hidden>
+                </label>
+            </div>
         </div>
         {{-- 商品の詳細 --}}
         <div class="sell-form__section">
@@ -38,16 +40,16 @@
                 <div class="sell-form__title">
                     カテゴリー
                 </div>
-                <div class="sell-form__categories">b
+                <div class="sell-form__categories">
                     @foreach($categories as $category)
-                    <label>
+                    <label class="sell-form__category">
                         <input
                             type="checkbox"
                             name="categories[]"
                             value="{{ $category->id }}"
                             {{ in_array($category->id, old('categories', [])) ? 'checked' : ''}}
                         >
-                        {{ $category->name }}
+                        <span>{{ $category->name }}</span>
                     </label>
                     @endforeach
                 </div>
