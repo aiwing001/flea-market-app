@@ -20,6 +20,7 @@
             </p>
             <p class="item-page__price">
                 ￥{{ number_format($item->price) }}
+                <span class="item-page__price-tax">(税込)</span>
             </p>
             <div class="item-page__meta">
                 <div class="item-page__meta-item">
@@ -27,18 +28,26 @@
                         <form action="/like/{{ $item->id }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="item-page__like-button" type="submit">♥</button>
+                            <button
+                                class="item-page__meta-icon item-page__like-button"
+                                type="submit">
+                                ♥
+                            </button>
                         </form>
                     @else
                         <form action="/like/{{ $item->id }}" method="POST">
                             @csrf
-                            <button class="item-page__like-button" type="submit">♡</button>
+                            <button
+                                class="item-page__meta-icon item-page__like-button"
+                                type="submit">
+                                ♡
+                            </button>
                         </form>
                     @endif
                     <span>{{ $item->likes->count() }}</span>
                 </div>
                 <div class="item-page__meta-item">
-                    💬
+                    <span class="item-page__meta-icon">💬</span>
                     <span>{{ $item->comments->count() }}</span>
                 </div>
             </div>
@@ -60,13 +69,18 @@
                     商品情報
                 </h2>
                 <p>
-                    カテゴリ:
+                    <span class="item-page__label">カテゴリー</span>
                     @foreach($item->categories as $category)
-                        <span>{{ $category->name }}</span>
+                        <span class="item-page__category">
+                            {{ $category->name }}
+                        </span>
                     @endforeach
                 </p>
                 <p>
-                    商品状態:{{ $item->condition }}
+                    <span class="item-page__label">商品状態</span>
+                    <span class="item-page__condition">
+                        {{ $item->condition_label }}
+                    </span>
                 </p>
             </div>
             <div class="item-page__comments">

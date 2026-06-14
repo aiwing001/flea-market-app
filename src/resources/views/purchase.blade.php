@@ -74,7 +74,7 @@
                 </div>
                 <div class="purchase-summary__row">
                     <p>支払い方法</p>
-                    <p>カード払い</p>
+                    <p>コンビニ払い</p>
                 </div>
             </div>
             <button class="purchase-summary__button" type="submit">

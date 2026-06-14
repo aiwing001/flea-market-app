@@ -39,4 +39,15 @@ class Product extends Model
     {
         return $this->hasOne(Purchase::class);
     }
+
+    public function getConditionLabelAttribute()
+    {
+        return match ($this->condition) {
+            1 => '良好',
+            2 => '目立った傷や汚れなし',
+            3 => 'やや傷や汚れあり',
+            4 => '状態が悪い',
+            defolt => '',
+        };
+    }
 }
