@@ -27,7 +27,6 @@
                         placeholder="何をお探しですか？">
                         <input type="hidden" name="tab" value="{{ $tab ?? request('tab', '') }}">
                 </form>
-
                 <nav class="header-nav">
                 @auth
                     <form action="/logout" method="POST">
@@ -36,7 +35,7 @@
                             ログアウト
                         </button>
                     </form>
-                    @else
+                @else
                     <a class="header-nav__link" href="/login">
                         ログイン
                     </a>

@@ -74,7 +74,7 @@
                 </div>
                 <div class="purchase-summary__row">
                     <p>支払い方法</p>
-                    <p>コンビニ払い</p>
+                    <p id="payment-method-summary">選択してください</p>
                 </div>
             </div>
             <button class="purchase-summary__button" type="submit">
@@ -83,5 +83,20 @@
         </aside>
     </form>
 </div>
+
+<script>
+    const paymentSelect = document.querySelector('select[name="payment_method"]');
+    const paymentSummary = document.getElementById('payment-method-summary');
+
+    paymentSelect.addEventListener('change', function () {
+        if (paymentSelect.value === 'konbini') {
+            paymentSummary.textContent = 'コンビニ払い';
+        } else if (paymentSelect.value === 'card') {
+            paymentSummary.textContent = 'カード払い';
+        } else {
+            paymentSummary.textContent = '選択してください';
+        }
+    });
+</script>
 
 @endsection
