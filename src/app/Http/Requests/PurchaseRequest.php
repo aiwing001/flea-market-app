@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Address;
 
 class PurchaseRequest extends FormRequest
 {
@@ -26,6 +27,17 @@ class PurchaseRequest extends FormRequest
         return [
             'payment_method' => 'required|in:card,konbini',
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $address = Address::where('user_id', auth()->id())->first();
+
+            if (!$address || !$address->postal_code || !$address->address) {
+                $validator->errors()->add('address', '配送先を入力してください');
+            }
+        });
     }
 
     public function messages()

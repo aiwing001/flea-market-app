@@ -63,6 +63,9 @@
                         {{ $address ? $address->building : Auth::user()->building }}
                     </p>
                 </div>
+                @error('address')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
             </section>
         </div>
         {{-- 購入内容画面 --}}
