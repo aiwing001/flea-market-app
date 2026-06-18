@@ -14,6 +14,7 @@
 
 <form class="address-form" action="/purchase/address/{{ $item_id }}" method="POST">
     @csrf
+    <input type="hidden" name="payment_method" value="{{ request('payment_method') }}">
     <div class="address-form__group">
         <div class="address-form__title">
             郵便番号

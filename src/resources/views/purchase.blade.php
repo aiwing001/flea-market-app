@@ -6,6 +6,10 @@
 
 @section('content')
 
+@php
+    $selectedPayment = old('payment_method', session('payment_method'));
+@endphp
+
 <div class="purchase-page">
     <form class="purchase-form" action="/item/{{ $item->id }}/purchase" method="POST">
         @csrf
@@ -33,9 +37,15 @@
                 </h3>
                 <div class="purchase-payment__select">
                     <select name="payment_method">
-                        <option value="">選択してください</option>
-                        <option value="konbini">コンビニ払い</option>
-                        <option value="card">カード払い</option>
+                        <option value="">
+                            選択してください
+                        </option>
+                        <option value="konbini" {{ $selectedPayment == 'konbini' ? 'selected' : '' }}>
+                            コンビニ払い
+                        </option>
+                        <option value="card" {{ $selectedPayment == 'card' ? 'selected' : '' }}>
+                            カード払い
+                        </option>
                     </select>
                     @error('payment_method')
                         <p class="error-message">{{ $message }}</p>
@@ -77,7 +87,10 @@
                 </div>
                 <div class="purchase-summary__row">
                     <p>支払い方法</p>
-                    <p id="payment-method-summary">選択してください</p>
+                    <p id="payment-method-summary">
+                        {{ $selectedPayment == 'konbini' ? 'コンビニ払い' : 
+                            ($selectedPayment == 'card' ? 'カード払い' : '選択してください') }}
+                    </p>
                 </div>
             </div>
             <button class="purchase-summary__button" type="submit">
@@ -90,6 +103,7 @@
 <script>
     const paymentSelect = document.querySelector('select[name="payment_method"]');
     const paymentSummary = document.getElementById('payment-method-summary');
+    const addressChangeLink = document.querySelector('.purchase-address__change');
 
     paymentSelect.addEventListener('change', function () {
         if (paymentSelect.value === 'konbini') {
@@ -100,6 +114,17 @@
             paymentSummary.textContent = '選択してください';
         }
     });
+
+    addressChangeLink.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (paymentSelect.value) {
+            window.location.href = addressChangeLink.href + '?payment_method=' + paymentSelect.value;
+        } else {
+            window.location.href = addressChangeLink.href;
+        }
+    });
+
 </script>
 
 @endsection

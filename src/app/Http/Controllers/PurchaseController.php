@@ -23,8 +23,12 @@ class PurchaseController extends Controller
         return view('purchase', compact('item', 'address'));
     }
 
-    public function address($item_id)
+    public function address(Request $request, $item_id)
     {
+        if ($request->payment_method) {
+            session(['payment_method' => $request->payment_method]);
+        }
+
         return view('address', compact('item_id'));
     }
 
@@ -66,6 +70,10 @@ class PurchaseController extends Controller
                 'building' => $request->building,
             ]
         );
+
+        if ($request->payment_method) {
+            session(['payment_method' => $request->payment_method]);
+        }
 
         return redirect('/item/' . $item_id . '/purchase');
         
