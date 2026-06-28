@@ -18,6 +18,10 @@ class PurchaseController extends Controller
     {
         $item = Product::findOrFail($item_id);
 
+        if ($item->status == 2) {
+            return redirect('/item/' . $item->id);
+        }
+
         $address = Address::where('user_id', Auth::id())->first();
 
         return view('purchase', compact('item', 'address'));
@@ -35,6 +39,10 @@ class PurchaseController extends Controller
     public function store(PurchaseRequest $request,$item_id)
     {
         $item = Product::findOrFail($item_id);
+
+        if ($item->status == 2) {
+            return redirect('/item/' . $item->id);
+        }
 
         Stripe::setApiKey(config('services.stripe.secret'));
 

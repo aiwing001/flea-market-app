@@ -51,6 +51,11 @@ php artisan db:seed
 php artisan storage:link
 ```
 
+テスト実行
+```bash
+php artisan test
+```
+
 ## 使用技術
 
 - PHP 8.1.34

@@ -20,7 +20,10 @@
         <div class="profile-form__image">
             <img
                 class="profile-form__image--preview"
-                src="{{ asset('images/default-icon.png') }}"
+                src="{{ auth()->user()->image_url
+                    ? asset('storage/' . auth()->user()->image_url)
+                    : asset('images/default-icon.png') }}"
+                alt="プロフィール画像"
                 >
             <label class="profile-form__image--button">
                 画像を選択する

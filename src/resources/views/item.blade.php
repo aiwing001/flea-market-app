@@ -22,6 +22,7 @@
                 ￥{{ number_format($item->price) }}
                 <span class="item-page__price-tax">(税込)</span>
             </p>
+
             <div class="item-page__meta">
                 <div class="item-page__meta-item">
                     @if($isLiked)
@@ -29,7 +30,7 @@
                             @csrf
                             @method('DELETE')
                             <button
-                                class="item-page__meta-icon item-page__like-button"
+                                class="item-page__meta-icon item-page__like-button item-page__like-button--liked"
                                 type="submit">
                                 ♥
                             </button>
@@ -52,9 +53,16 @@
                 </div>
             </div>
             <div class="item-page__purchase">
-                <a class="item-page__purchase-button" href="/item/{{ $item->id }}/purchase">
-                    購入手続きへ
-                </a>
+                @if($item->status == 1)
+                    <a class="item-page__purchase-button" href="/item/{{ $item->id }}/purchase">
+                        購入手続きへ
+                    </a>
+                @else
+                    <button
+                        class="item-page__purchase-button item-page__purchase-button--sold" disabled>
+                        売り切れ
+                    </button>
+                @endif
             </div>
             <div class="item-page__description">
                 <h2 class="item-page__section-title">

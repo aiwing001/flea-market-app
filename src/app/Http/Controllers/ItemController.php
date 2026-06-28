@@ -23,6 +23,9 @@ class ItemController extends Controller
         }
 
         $items = Product::query()
+            ->when(Auth::check(), function ($query) {
+                $query->where('user_id', '!=', Auth::id());
+            })
             ->when($tab === 'mylist' && Auth::check(), function ($query) {
                 $query->whereHas('likes', function ($query) {
                     $query->where('user_id', Auth::id());

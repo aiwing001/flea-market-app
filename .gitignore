@@ -16,3 +16,4 @@ yarn-error.log
 docker/mysql/data/
 src/.env
 src/public/storage
+src/.env.testing

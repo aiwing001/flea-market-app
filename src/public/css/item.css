@@ -164,3 +164,12 @@
     color: #ff5555;
     margin-top: 5px;
 }
+
+.item-page__like-button--liked {
+    color: red;
+}
+
+.item-page__purchase-button--sold {
+    background-color: #999;
+    cursor: not-allowed;
+}

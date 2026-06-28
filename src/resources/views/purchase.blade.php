@@ -88,7 +88,7 @@
                 <div class="purchase-summary__row">
                     <p>支払い方法</p>
                     <p id="payment-method-summary">
-                        {{ $selectedPayment == 'konbini' ? 'コンビニ払い' : 
+                        {{ $selectedPayment == 'konbini' ? 'コンビニ払い' :
                             ($selectedPayment == 'card' ? 'カード払い' : '選択してください') }}
                     </p>
                 </div>
